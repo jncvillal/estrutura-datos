@@ -1,0 +1,6 @@
+SELECT Proyecto.ID_Proyecto,Proyecto.Clasificacion,
+sum(Compra.Cantidad * MaterialConstruccion.Precio_Unidad) AS "Gasto_Compras",Proyecto.Serial FROM Proyecto
+JOIN Compra ON Compra.ID_Proyecto = Proyecto.ID_Proyecto
+JOIN MaterialConstruccion ON MaterialConstruccion.ID_MaterialConstruccion = Compra.ID_MaterialConstruccion
+GROUP BY Proyecto.ID_Proyecto ORDER BY Gasto_Compras
+LIMIT 0, 5;
